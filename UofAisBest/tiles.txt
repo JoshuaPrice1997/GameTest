@@ -1,0 +1,6 @@
+0 grass
+1 grassEx
+2 path
+3 pathCorner
+4 hill
+5 hillCorner
