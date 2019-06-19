@@ -68,7 +68,7 @@ def main():
             #---------------------#
             #Game State
             #---------------------#
-            screen.blit(background,(0,0))
+            printTiles(mapo,tiles,screen)
             screen.blit(player,(x,y))
             #basic movement
             if key[pygame.K_w]:y -= 10
@@ -84,15 +84,6 @@ def main():
 
         #Animate
         pygame.display.update()
-
-# def loadGraphics():
-#     player = pygame.image.load('idle1.png').convert()
-#     background = pygame.image.load('adelaide.jpg').convert()
-#     background = pygame.transform.scale(background,(1280,720))
-#     welcome = pygame.image.load('welcome.png').convert()
-#     grass = pygame.transform.scale(pygame.image.load('grass.png').convert(),(128,128))
-#     path = pygame.transform.scale(pygame.image.load('path.png').convert,(128,128))
-#     enter = pygame.image.load('enter.png').convert()
 
 def loadTiles():
     tiles = panda.DataFrame()
@@ -110,6 +101,21 @@ def loadText():
         temp = panda.DataFrame(data={pygame.image.load(textDat[i][1]+'.png').convert()},index=[textDat[i][1]])
         text = text.append(temp)
     return text
+
+def printTiles(map,tiles,screen):
+    for i in range(map.shape[0]):
+        for j in range(map.shape[1]):
+            #tile = int(map[j][i])
+            #if tile == 2:
+                #tileCbecmer(map,tile,i,j)
+            screen.blit(tiles[0][int(map[j][i])],(i*128,j*128))
+def tileChecker(map,t,i,j):
+    checker = np.array([int(map[j-1][i]),int(map[j+1][i]),int(map[j][i-1]),int(map[j][i+1])])
+    rotor = 0
+    if sum(checker) == 4:
+        tile = t + 3
+    if sum(checker) == 3:
+        rotor = np.where(checker != t)
 
 
      
