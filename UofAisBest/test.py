@@ -24,7 +24,7 @@ def main():
     #importing assets
     tiles = loadTiles()
     text = loadText()
-    print(text)
+   # print(text)
     player = pygame.image.load('idle1.png').convert()
     background = pygame.image.load('adelaide.jpg').convert()
     background = pygame.transform.scale(background,(1280,720))
@@ -96,7 +96,6 @@ def loadTiles():
 def loadText():
     text = panda.DataFrame()
     textDat = np.genfromtxt('text.txt',usecols=range(2),dtype=str)
-    print(textDat.shape)
     for i in range(textDat.shape[0]):
         temp = panda.DataFrame(data={pygame.image.load(textDat[i][1]+'.png').convert()},index=[textDat[i][1]])
         text = text.append(temp)

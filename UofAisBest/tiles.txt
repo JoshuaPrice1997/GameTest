@@ -2,8 +2,6 @@
 1 grassEx
 2 path
 3 pathCorner
-4 pathJunc
 5 pathCross
 6 hill
 7 hillCorner
-8 hillJunc
